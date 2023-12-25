@@ -104,4 +104,6 @@ source $ZSH/oh-my-zsh.sh
 fpath=(~/dofiles/zsh/completions $fpath)
 
 # Load aliases
-source $HOME/dotfiles/zsh/.zshalias
+if [ -f ~/.zshalias ]; then
+    source ~/.zshalias
+fi

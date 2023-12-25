@@ -1,1 +1,18 @@
 alias ls="eza"
+
+#
+# dotsave: git add, commit and push in dotfiles repo
+# Credit: Vetle Solberg
+# @param $1 - (optional) custom commit message
+function dotsave() {
+    repo_dir="$HOME/dotfiles/"
+    timestamp="$(date +%Y.%m.%d\ \@\ %X)"
+    if [ ! $1 ]; then
+        msg="[Autosave] $timestamp"
+    else
+        msg="$1"
+    fi
+    git -C $repo_dir add -A
+    git -C $repo_dir commit -m "$msg"
+    git -C $repo_dir push
+}
