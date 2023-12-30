@@ -107,3 +107,9 @@ fpath=(~/dofiles/zsh/completions $fpath)
 if [ -f ~/.zshalias ]; then
     source ~/.zshalias
 fi
+
+# Use ripgrep instead of grep for fzf. Allow multiple selection by default with -m
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
